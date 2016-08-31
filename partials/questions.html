@@ -1,0 +1,88 @@
+<!--<h2 style="text-align:center">Questions</h2>
+<br>
+<h5 class="pull-right">Add New Question : <a href="newquest.html">Click Here </a></h5>
+<div class="container" data-ng-controller="QuestionsCtrl">
+    <div class="table-responsive">
+        <table id="example" class="table table-striped table-bordered table-hover table-responsive" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Question
+                    </th>
+                    <th>
+                        Question Type
+                    </th>
+
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="question in questions">
+                    <td>
+                        {{ question.text }}
+                    </td>
+                    <td>
+                        {{ question.type }}
+                    </td>
+
+                    <td>
+                        <a href="editQuestion.html">Edit Question</a>
+                    </td>
+                    <td>
+                        <a href="#">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>-->
+
+
+<div class="row" data-ng-controller="QuestionsCtrl">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Questions
+            </div>
+            <div class="panel-body">
+
+                <dl>
+                    <dt pagination-id="questions" dir-paginate-start="question in questions | itemsPerPage: limit" total-items="total" current-page="page">
+                        {{question.text}}
+                    </dt>
+                    <dd>
+                        <small>type:
+                            {{question.type}}
+                        </small>
+                    </dd>
+                    <hr dir-paginate-end/>
+                </dl>
+                <dir-pagination-controls pagination-id="questions" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                <hr/>
+                <p>
+                    <h4>Meta:</h4>
+                    <ul>
+                        <li>
+                            <small>Count:</small> {{meta.total}}
+                        </li>
+                        <li>
+                            <small>Current Page:</small> {{meta.page}}
+                        </li>
+                        <li>
+                            <small>Limit:</small> {{meta.limit}}
+                        </li>
+                        <li>
+                            <small>Page Count:</small> {{meta.pages}}
+                        </li>
+                    </ul>
+                </p>
+                <hr/>
+            </div>
+        </div>
+    </div>
+</div>
